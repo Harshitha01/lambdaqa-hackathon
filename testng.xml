@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ParallelSuite" parallel="classes" thread-count="2">
+
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <test name="HerokuAppTests">
+        <parameter name="runMode" value="lambdatest"/>
+        <parameter name="browser" value="chrome"/>
+
+        <classes>
+            <!-- Test for Login -->
+            <class name="testFiles.LoginTest">
+                <parameter name="testName" value="Heroku Login Test - Valid Credentials"/>
+            </class>
+
+            <!-- Test for Alerts -->
+            <class name="testFiles.AlertsTest">
+                <parameter name="testName" value="Heroku JS Alerts Handling"/>
+            </class>
+        </classes>
+    </test>
+</suite>
